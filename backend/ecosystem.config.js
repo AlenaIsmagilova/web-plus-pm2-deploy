@@ -18,14 +18,19 @@ module.exports = {
 
   deploy: {
     production: {
-      key: '/home/alena_ismagilova/.ssh/id_rsa',
+      // key: '/home/alena_ismagilova/.ssh/id_rsa',
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      'pre-deploy-local': `scp ./*.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend`,
-      'post-deploy': 'npm i && npm run build',
+      'pre-setup': 'rm -rf web-plus-pm2-deploy',
+      'pre-deploy-local': 'pwd',
+      // eslint-disable-next-line max-len
+      // 'post-setup': `scp /home/alena/development/praktikum/web-plus-pm2-deploy/backend/.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}`,
+      // eslint-disable-next-line max-len
+      // 'pre-deploy-local': `scp ./.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend`,
+      // 'post-deploy': 'npm i && npm run build',
     },
   },
 };
