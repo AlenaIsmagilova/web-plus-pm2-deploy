@@ -25,7 +25,7 @@ module.exports = {
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
       'pre-setup': 'rm -rf web-plus-pm2-deploy',
-      'pre-deploy-local': 'pwd',
+      'pre-deploy-local': `scp ./.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend`,
       // eslint-disable-next-line max-len
       // 'post-setup': `scp /home/alena/development/praktikum/web-plus-pm2-deploy/backend/.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}`,
       // eslint-disable-next-line max-len
