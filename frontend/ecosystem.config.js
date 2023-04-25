@@ -17,7 +17,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      "post-deploy": "cd frontend && npm install && npm run build",
+      "post-deploy": "cd frontend && npm install && npm run build && sudo scp -r build/* /var/www/build",
     },
   },
 };
