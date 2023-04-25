@@ -23,7 +23,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      'pre-setup': 'rm -rf web-plus-pm2-deploy && sudo rm -rf /var/www/build && sudo mkdir /var/www/build',
+      'pre-setup': 'pm2 kill && rm -rf web-plus-pm2-deploy && sudo rm -rf /var/www/build && sudo mkdir /var/www/build',
       'pre-deploy-local': `scp ./.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/source/backend`,
       'post-deploy': 'cd backend && npm i && npm run build && pm2 start',
     },
